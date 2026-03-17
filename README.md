@@ -1,17 +1,13 @@
 # HSFNet
 
-Magnetic resonance (MR) image quality assessment is essential for disease diagnosis and data analysis. However, previous methods typically treat MR signals as general images and process them with vision-oriented approaches that overlook the sequential nature. Besides, existing datasets are often limited by small sample sizes, insufficient annotators, and a lack of fine-grained labels. In this paper, we propose a hybrid spatial-frequency network (HSFNet) with enhanced Mamba for MR image quality assessment, which extracts quality features from both spatial and frequency domains. Within each data domain, the local image features and global sequence insights are integrated through a dual-pathway mechanism inspired by Mamba. To further enhance the robustness of quality features, a novel iterative cascading process is introduced. Moreover, we establish a large-scale benchmark dataset for MR image quality assessment by simulating five distortion types across four severity levels, ensuring strong alignment with clinical experience. The benchmark dataset involves 8 sub-datasets, containing 7,122 raw images and 142,440 distorted versions. Extensive experiments on both T1-weighting and T2-weighting MR datasets demonstrate the proposed method's effectiveness and generalization ability in comparison with state-of-the-art MR image quality assessment methods. 
+Code implementation for the paper _MR Image Quality Assessment via Enhanced Mamba: A Hybrid Spatial-frequency Approach_ (BIBM 2024).
 
 <div align=center><img src="assets/HSFNet.jpg"></div>
-
-
-
 
 
 ## Initialize python environment.
 
 ```
-git clone https://github.com/cyfqylyw/HSFNet.git
 cd HSFNet
 conda create -n mriqa python=3.9
 conda activate mriqa
@@ -145,7 +141,6 @@ For `HSFNet` training, evluation and model saving, run command
 python main.py --ds_name NFBS_T1w --dist_type all --model_name HSFNet --batch_size 32 --num_workers 8 --num_epochs 20 --start_epoch 0 --lr 0.001 --num_classes 21 --sample_length 30 --last_dim 128 --cuda_id 0
 ```
 
-
 ### 2. Cross dataset evaluation
 
 To conduct cross dataset evaluation, run the following command:
@@ -154,8 +149,19 @@ To conduct cross dataset evaluation, run the following command:
 python cross_dataset.py --train_ds_name IXI_T1w --test_ds_name OASIS_T1w
 ```
 
+## Acknowledgments
 
+We thank for the code implementation from [MedMamba](https://github.com/YubiaoYue/MedMamba) and [TorchIO](https://docs.torchio.org/).
 
 ## Citation
 
-TBD
+```
+@inproceedings{lou2024mr,
+  title={MR image quality assessment via enhanced mamba: A hybrid spatial-frequency approach},
+  author={Lou, Yiwei and Xu, Dexuan and Zhang, Rongchao and Zhang, Jiayu and Cao, Yongzhi and Wang, Hanpin and Huang, Yu},
+  booktitle={2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)},
+  pages={3561--3564},
+  year={2024},
+  organization={IEEE}
+}
+```
